@@ -4,19 +4,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Baloo+2:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Pacifico&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Orbitron:wght@500&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
     border: 0;
-    overflow: hidden;
+    background-color: black;
+
   }
-  
+
   canvas{
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+  
 
   #particles-js {
     position: absolute;
@@ -24,6 +29,7 @@ body{
     height: 100%;
     top: 0;
     left: 0;
+    z-index: -1;
     pointer-events: auto;
   }
   
@@ -106,8 +112,7 @@ body{
 
 
 
-
-
+  
 
 
 
@@ -151,147 +156,11 @@ body{
 
 
 
-/* Container styles */
-    .image-marquee-wrapper {
-      position: relative;
-      width: 100%;
-      padding: 2rem 0;
-      overflow: hidden;
-    }
-    
-    /* Fade gradient masks */
-    .image-marquee-wrapper::before,
-    .image-marquee-wrapper::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 15%;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-    
-    /* Left fade */
-    .image-marquee-wrapper::before {
-      left: 0;
-      background: linear-gradient(to right, #000000 0%, rgba(245, 245, 245, 0) 100%);
-    }
-    
-    /* Right fade */
-    .image-marquee-wrapper::after {
-      right: 0;
-      background: linear-gradient(to left, #000000 0%, rgba(245, 245, 245, 0) 100%);
-    }
-    
-    .image-marquee-track {
-      display: flex;
-      animation: scrollX 30s linear infinite;
-      width: max-content;
-    }
-    
-    .image-marquee-track:hover {
-      animation-play-state: paused;
-    }
-    
-    @keyframes scrollX {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-50% - 8px)); } /* Adjusted for gap */
-    }
-    
-    .image-marquee-item {
-      flex: 0 0 auto;
-      padding: 0 16px;
-    }
-    
-    .image-card {
-      position: relative;
-      width: 240px;
-      height: 160px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-    }
-    
-    .image-card:hover {
-      transform: scale(1.05) rotate(2deg);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-    
-    .image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
-      opacity: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 1rem;
-      transition: opacity 0.3s ease;
-    }
-    
-    .image-card:hover .image-overlay {
-      opacity: 1;
-    }
-    
-    .image-overlay-text {
-      color: white;
-      font-weight: 600;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .image-card {
-        width: 180px;
-        height: 120px;
-      }
-      
-      .image-marquee-wrapper::before,
-      .image-marquee-wrapper::after {
-        width: 20%;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .image-card {
-        width: 140px;
-        height: 100px;
-      }
-    }
-
-
-
-
-
-
-
-
-
-
 .project-card,
 .skill-card {
   transition: border-color 0.3s ease;
 }
 
-
-
-
-    /* Skills Container */
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
 
     /* Skills Card */
     .skill-card {
@@ -368,7 +237,7 @@ body{
 
     /* Mobile optimization */
     @media (max-width: 768px) {
-      .skills-container {
+      .skills-marquee-wrapper {
         gap: 1rem;
         padding: 1.5rem;
       }
@@ -390,7 +259,7 @@ body{
     }
     
     @media (max-width: 480px) {
-      .skills-container {
+      .skills-marquee-wrapper {
         gap: 0.75rem;
         padding: 1rem;
       }
@@ -411,6 +280,70 @@ body{
 
 
 
+    .skills-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+/* Fade gradient masks */
+.skills-marquee-wrapper::before,
+.skills-marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Left fade */
+.skills-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Right fade */
+.skills-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Marquee Track */
+.skills-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollSkillsX 25s linear infinite;
+}
+
+/* Pause animation on hover */
+.skills-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Marquee Animation */
+@keyframes scrollSkillsX {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 8px)); }
+}
+
+/* Adjust skill card in marquee */
+.skills-marquee-track .skill-card {
+  flex: 0 0 auto;
+  margin: 0 16px;
+}
 
 
 
+
+
+
+
+
+
+
+
+
+ 
