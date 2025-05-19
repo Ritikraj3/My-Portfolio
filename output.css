@@ -804,6 +804,9 @@
   .p-\[3px\] {
     padding: 3px;
   }
+  .px-1 {
+    padding-inline: calc(var(--spacing) * 1);
+  }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
