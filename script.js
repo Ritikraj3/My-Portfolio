@@ -39,6 +39,29 @@ downloadBtn.addEventListener('click', function () {
 
 
 
+// ==============hire me button
+
+const textSpan = document.getElementById('hireMe');
+
+  if (window.innerWidth < 640) { // Tailwind's sm breakpoint (640px)
+    textSpan.textContent = 'Hire Me';
+  }
+
+  // Optional: Update on resize as well
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 640) {
+      textSpan.textContent = 'Hire Me';
+    } else {
+      textSpan.textContent = "Let's Work together";
+    }
+  });
+
+
+
+
+
+
+
 
 
 
