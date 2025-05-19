@@ -321,9 +321,7 @@ body{
     }
   }
   
-  .smooth-ticker-container:hover .smooth-ticker-track {
-    animation-play-state: paused;
-  }
+
   
 
 

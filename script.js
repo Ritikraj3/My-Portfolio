@@ -39,23 +39,6 @@ downloadBtn.addEventListener('click', function () {
 
 
 
-// ==============hire me button
-
-const textSpan = document.getElementById('hireMe');
-
-  if (window.innerWidth < 640) { // Tailwind's sm breakpoint (640px)
-    textSpan.textContent = 'Hire Me';
-  }
-
-  // Optional: Update on resize as well
-  window.addEventListener('resize', () => {
-    if (window.innerWidth < 640) {
-      textSpan.textContent = 'Hire Me';
-    } else {
-      textSpan.textContent = "Let's Work together";
-    }
-  });
-
 
 
 
@@ -72,21 +55,25 @@ const textSpan = document.getElementById('hireMe');
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ticker = document.getElementById('ticker-content');
-    const duplicate = document.getElementById('ticker-duplicate');
-  
-    // Clone original items into the duplicate container
-    duplicate.innerHTML = ticker.innerHTML;
-  
-    // Measure width and set animation duration dynamically
-    const tickerTrack = document.querySelector('.smooth-ticker-track');
-    const totalWidth = ticker.offsetWidth;
-  
-    // Adjust speed: larger width = longer duration
-    const speed = 150; // pixels per second
-    const duration = totalWidth * 2 / speed; // doubled because of duplication
-    tickerTrack.style.animationDuration = `${duration}s`;
-  });
+  const ticker = document.getElementById('ticker-content');
+  const duplicate = document.getElementById('ticker-duplicate');
+  const tickerTrack = document.querySelector('.smooth-ticker-track');
+
+  // Clone original items into the duplicate container
+  duplicate.innerHTML = ticker.innerHTML;
+
+  // Calculate the total width
+  const totalWidth = ticker.scrollWidth;
+
+  // Set total width for track (twice because it's duplicated)
+  tickerTrack.style.width = `${totalWidth * 2}px`;
+
+  // Set animation duration based on width
+  const speed = 100; // pixels per second
+  const duration = (totalWidth * 2) / speed;
+  tickerTrack.style.animationDuration = `${duration}s`;
+});
+
 
   
   

@@ -42,3 +42,73 @@ About me button Earlier : -
 
   Optional Overlay
   <div class="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div> -->
+
+  ======================================================================================================================
+
+  animation for icons 
+
+      <!-- <script>
+      const screenWidth = window.innerWidth;
+      if (screenWidth > 768) {
+        const shapeContainer = document.querySelector('.shape');
+        const icons = ["fa-comment", "fa-star", "fa-envelope", "fa-paper-plane", "fa-user", "fa-microphone"];
+        const floatingIcons = [];
+        const baseIconCount = 15;
+        const fixedCount = 15;
+        const totalIcons = screenWidth > 1024 ? baseIconCount : Math.floor(baseIconCount * 0.6);
+
+        for (let i = 0; i < totalIcons; i++) {
+          const icon = document.createElement("i");
+          icon.classList.add("fa-solid", icons[i % icons.length], "random-shape");
+
+          let x = Math.random() * 100;
+          let y = Math.random() * 100;
+          if (i < fixedCount && x > 25 && x < 75 && y > 30 && y < 70) {
+            x = Math.random() * 20 + 5;
+            y = Math.random() * 20 + 5;
+          }
+
+          icon.dataset.baseX = x;
+          icon.dataset.baseY = y;
+          icon.style.left = x + "vw";
+          icon.style.top = y + "vh";
+          icon.style.fontSize = (Math.random() * 1.5 + 1) + "rem";
+
+          shapeContainer.appendChild(icon);
+          floatingIcons.push(icon);
+        }
+
+        function animateIcons() {
+          floatingIcons.forEach(icon => {
+            const offsetX = Math.sin(Date.now() / 1000 + parseFloat(icon.dataset.baseX)) * 10;
+            const offsetY = Math.cos(Date.now() / 800 + parseFloat(icon.dataset.baseY)) * 10;
+            icon.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+          });
+          requestAnimationFrame(animateIcons);
+        }
+        animateIcons();
+
+        document.addEventListener('mousemove', (e) => {
+          floatingIcons.forEach((icon) => {
+            const rect = icon.getBoundingClientRect();
+            const iconCenterX = rect.left + rect.width / 2;
+            const iconCenterY = rect.top + rect.height / 2;
+
+            const dx = e.clientX - iconCenterX;
+            const dy = e.clientY - iconCenterY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 100) {
+              const angle = Math.atan2(dy, dx);
+              const offsetX = -Math.cos(angle) * (100 - distance) * 0.6;
+              const offsetY = -Math.sin(angle) * (100 - distance) * 0.6;
+              icon.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            }
+          });
+        });
+
+        document.addEventListener('mouseleave', () => {
+          floatingIcons.forEach(icon => icon.style.transform = '');
+        });
+      }
+    </script> -->
