@@ -6,14 +6,233 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Orbitron:wght@500&display=swap');
 
+*{
+  box-sizing: border-box;
+}
+
+
+
+
+/* For WebKit Browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0b1d; /* Dark background for track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a855f7; /* Purple color */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea; /* Slightly darker on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #0e0b1d;
+}
+
+
+
+
+
+
+
+
+
+
+@font-face {
+  font-family: 'Amsterdam';
+  src: url('./assets/fonts/Amsterdam.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Arenq';
+  src: url('./assets/fonts/arenq.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Beckman';
+  src: url('./assets/fonts/Beckman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('./assets/fonts/GeneralSans.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'momentum';
+  src: url('./assets/fonts/momentum.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cinderela';
+  src: url('./assets/fonts/Cinderela.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Contender';
+  src: url('./assets/fonts/Contender.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Darlington';
+  src: url('./assets/fonts/Darlington.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Halimun';
+  src: url('./assets/fonts/Halimun.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Migae';
+  src: url('./assets/fonts/Migae.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mova';
+  src: url('./assets/fonts/mova.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Overcame';
+  src: url('./assets/fonts/overcame-bold.woff') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Overcame Outline';
+  src: url('./assets/fonts/overcame-outline.woff') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Luckyfield';
+  src: url('./assets/fonts/Luckyfield.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html{
+  scroll-behavior: smooth;
+}
 
 body{
     margin: 0;
     padding: 0;
     border: 0;
+    position: relative;
+    overflow: auto;
     background-color: black;
-
   }
+
+
+
+
+
+.toast {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  background: rgba(20, 20, 30, 0.95);
+  border: 1px solid rgba(170, 0, 255, 0.5);
+  color: #e0fdfb;
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 18px 26px;
+  border-radius: 12px;
+  font-size: 15px;
+  box-shadow: 0 0 12px rgba(238, 0, 255, 0.2);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  pointer-events: auto;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .toast {
+    top: 100px;
+    bottom: auto;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .toast.show {
+    transform: translateY(0);
+  }
+
+  .toast .subtext {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 641px) {
+  .toast {
+    transform: translateY(20px);
+  }
+
+  .toast.show {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+  
+
+
 
   canvas{
   position: absolute;
@@ -21,6 +240,8 @@ body{
   height: 100%;
   background: black;
 }
+
+
   
 
   #particles-js {
@@ -33,11 +254,7 @@ body{
     pointer-events: auto;
   }
   
-  /* Ensure the section has proper height */
-  .section-latest-works {
-    position: relative;
-    min-height: 100vh; /* Adjust this value based on your content */
-  }
+
 
   .mx-auto.my-10.w-\[90\%\].max-w-5xl.rounded-2xl {
     background-color: rgba(255, 255, 255, 0.05);
@@ -117,6 +334,41 @@ body{
 
 
 
+  
+
+
+
+
+
+.button-custom {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.button-custom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(172, 61, 216, 0.429);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.button-custom:hover::before {
+  opacity: 1;
+}
+
+.button-custom:hover {
+  color: white;
+}
+
+.button-custom span {
+  position: relative;
+  z-index: 1;
+}
 
 
 .project-card {
@@ -156,6 +408,7 @@ body{
 
 
 
+
 .project-card,
 .skill-card {
   transition: border-color 0.3s ease;
@@ -164,8 +417,8 @@ body{
 
     /* Skills Card */
     .skill-card {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -186,8 +439,8 @@ body{
 
     /* Card content */
     .skill-icon {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       margin-bottom: 10px;
       position: relative;
       z-index: 10;
@@ -248,8 +501,8 @@ body{
       }
       
       .skill-icon {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         margin-bottom: 8px;
       }
       
@@ -284,7 +537,7 @@ body{
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 2rem 0;
+  padding: 8px 0;
 }
 
 /* Fade gradient masks */
@@ -345,5 +598,52 @@ body{
 
 
 
+/* Nav bar  */
 
+.nav-box {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #dc63f7;
+  }
+
+  .nav-link:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: rgba(172, 61, 216, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .nav-box {
+      gap: 4px;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-link {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-box {
+      gap: 1px;
+      padding: 0.5rem 1rem;
+      margin-right: 8px;
+    }
+
+    .nav-link {
+      padding: 0.25rem 0.25rem;
+      font-size: 0.875rem;
+    }
+  }
  

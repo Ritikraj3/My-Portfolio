@@ -1,3 +1,37 @@
+const downloadBtn = document.getElementById('downloadResume');
+const toast = document.getElementById('toast');
+
+downloadBtn.addEventListener('click', function () {
+  const isMobile = window.innerWidth <= 640;
+
+  // Reset state
+  toast.classList.remove('hidden', 'show');
+
+  // Set initial off-screen position before showing
+  toast.style.transform = isMobile ? 'translateY(-20px)' : 'translateY(20px)';
+  toast.style.opacity = '0';
+
+  // Force reflow to ensure the browser registers the initial state
+  void toast.offsetWidth;
+
+  // Now show it and animate in
+  toast.classList.add('show');
+  toast.style.transform = 'translateY(0)';
+  toast.style.opacity = '1';
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    toast.style.transform = isMobile ? 'translateY(-20px)' : 'translateY(20px)';
+    toast.style.opacity = '0';
+
+    // Wait for animation to finish before hiding
+    setTimeout(() => {
+      toast.classList.remove('show');
+      toast.classList.add('hidden');
+    }, 400); // match the CSS transition duration
+  }, 3000);
+});
+
 
 
 
@@ -190,7 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   
-
 
 
 
