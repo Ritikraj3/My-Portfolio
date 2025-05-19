@@ -1350,11 +1350,6 @@
       margin-left: calc(var(--spacing) * 12);
     }
   }
-  .md\:block {
-    @media (width >= 48rem) {
-      display: block;
-    }
-  }
   .md\:h-90 {
     @media (width >= 48rem) {
       height: calc(var(--spacing) * 90);
