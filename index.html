@@ -9,7 +9,6 @@
   <script src="particle.js" defer></script>
   <link rel="stylesheet" href="font.css" />
   <link rel="stylesheet" href="output.css" />
-  <link rel="stylesheet" href="input.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <!-- Load the dotLottie player module -->
@@ -57,7 +56,7 @@
     </header>
 
     <div id="toast" class="toast hidden">
-      📄 My resume is flying to your downloads! 🚀<br>
+      📄 Thanks for checking out my resume! 🚀<br>
       Looking forward to connecting with you! 😊
     </div>
 
@@ -1363,19 +1362,31 @@
         updateCarouselPosition();
       }
 
-      function updateCarouselPosition() {
-        const cardWidth = carousel.children[0].offsetWidth + 16;
-        const offset = current * cardWidth;
-        carousel.style.transform = `translateX(calc(50% - ${offset + (cardWidth / 2)}px))`;
+function updateCarouselPosition() {
+  const cardWidth = carousel.children[0].offsetWidth + 16;
+  const offset = current * cardWidth;
 
-        [...carousel.children].forEach((child, index) => {
-          child.classList.toggle('active', index === current);
-        });
+  const isMobile = window.innerWidth <= 640;
 
-        [...dotsContainer.children].forEach((dot, index) => {
-          dot.className = `w-3 h-3 rounded-full ${index === (current % cards.length) ? 'bg-white' : 'bg-white/30'}`;
-        });
-      }
+  if (isMobile) {
+    const mobilePadding = 24; // matches Tailwind's px-6
+    const screenCenterOffset = (window.innerWidth / 2) - (cardWidth / 2) - mobilePadding;
+    carousel.style.transform = `translateX(${-offset + screenCenterOffset}px)`;
+  } else {
+    carousel.style.transform = `translateX(calc(50% - ${offset + (cardWidth / 2)}px))`;
+  }
+
+  [...carousel.children].forEach((child, index) => {
+    child.classList.toggle('active', index === current);
+  });
+
+  [...dotsContainer.children].forEach((dot, index) => {
+    dot.className = `w-3 h-3 rounded-full ${index === (current % cards.length) ? 'bg-white' : 'bg-white/30'}`;
+  });
+}
+
+
+
 
       document.getElementById('prev').onclick = () => {
         current = (current - 1 + extendedCards.length) % extendedCards.length;
