@@ -415,6 +415,9 @@
   .mb-20 {
     margin-bottom: calc(var(--spacing) * 20);
   }
+  .mb-22 {
+    margin-bottom: calc(var(--spacing) * 22);
+  }
   .mb-24 {
     margin-bottom: calc(var(--spacing) * 24);
   }
