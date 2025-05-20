@@ -699,6 +699,12 @@
       background-color: color-mix(in oklab, var(--color-green-800) 20%, transparent);
     }
   }
+  .bg-purple-400 {
+    background-color: var(--color-purple-400);
+  }
+  .bg-purple-500 {
+    background-color: var(--color-purple-500);
+  }
   .bg-transparent {
     background-color: transparent;
   }
